@@ -1,11 +1,11 @@
 {
-  "name": "wetube-challenage",
+  "name": "a03blueprint",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon --exec babel-node src/server.js"
+    "start": "nodemon --exec babel-node src/server.js localhost 8080"
   },
   "dependencies": {
     "@babel/core": "7.4.5",
