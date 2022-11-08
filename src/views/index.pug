@@ -1,0 +1,16 @@
+extends layout.pug
+include mixins/movie.pug
+
+block content  
+
+    form(method="GET" action="/filter") 
+        input(type="text" name="year" placeholder="Filter by year")
+        input(type="text" name="rating" placeholder="Filter by rating")
+        input(type="submit" value="Search")
+
+    
+    ul(style="padding:0px;") 
+        each movie in movies 
+            +movie(movie)
+        else 
+            li Not Found

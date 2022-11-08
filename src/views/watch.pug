@@ -1,0 +1,8 @@
+extends layout.pug 
+
+block content 
+    p=movie.summary
+
+    ul
+    each d in movie.genres
+        li=d
