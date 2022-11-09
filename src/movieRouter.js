@@ -1,10 +1,10 @@
 import express from "express";
-import { home, movieDetail, filterMovie } from "./movieController.js";
+import { home, movieDetail } from "./movieController.js";
 
 const movieRouter = express.Router();
 
-movieRouter.get("/", home);
-movieRouter.get("/filter", filterMovie);
-movieRouter.get("/:id", movieDetail);
+// create the '/' route
+// create the /:id route
+// create the /add route (GET + POST)
 
 export default movieRouter;
