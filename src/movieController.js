@@ -18,3 +18,13 @@ export const movieDetail = (req, res) => {
 Write the controller or controllers you need to render the form
 and to handle the submission
 */
+
+export const getAddMovie = (req, res) =>
+  res.render("add", { pageTitle: "Add Movie" });
+
+export const postAddMovie = (req, res) => {
+  const { title, synopsis, genres } = req.body;
+  addMovie({ title, synopsis, genres: genres.split(",") });
+
+  res.redirect("/");
+};
