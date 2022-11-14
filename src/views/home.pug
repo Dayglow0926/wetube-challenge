@@ -1,1 +1,10 @@
 extends layout/base.pug
+include mixins/movie.pug
+
+block content
+
+    ul 
+        each movie in movies
+            +movie(movie) 
+        else 
+            li Sorry nothing found.       

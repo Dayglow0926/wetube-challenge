@@ -1,0 +1,10 @@
+extends layout/base.pug 
+
+block content 
+    form(method="POST") 
+        input(name="title", type="text", placeholder="Title" value=movie.title)
+        input(name="summary", placeholder="Summary", required, type="text", value=movie.summary)
+        input(name="year", placeholder="Year", required, type="number", value=movie.year)
+        input(name="rating", placeholder="rating", required, type="number", value=movie.rating)
+        input(name="genres", placeholder="Genres separated by comma.", type="text", value=movie.genres.join())
+        input(type="submit", value="Save")

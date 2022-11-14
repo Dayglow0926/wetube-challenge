@@ -1,0 +1,13 @@
+extends layout/base.pug
+include mixins/movie
+
+block content 
+    form(method="GET")
+        input(placeholder="Search by Movie title", type="text" name="title")
+        input(type="submit", value="Search now")
+
+    ul 
+        each movie in movies
+            +movie(movie) 
+        else 
+            li Sorry nothing found.   
