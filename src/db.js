@@ -8,8 +8,7 @@ mongoose.connect(
   "mongodb+srv://wetubeadmin:wetube4ever@cluster0.uufes.mongodb.net/wetube?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
+    useFindAndModify: false
   }
 );
 
