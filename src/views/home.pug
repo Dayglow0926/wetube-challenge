@@ -1,4 +1,13 @@
 extends templates/layout
 
 block content
-  h1 Add your magic here
+  h1=`Welcome! ${user.name}`
+
+  h2 User profile
+  
+  ul
+    li name : #{user.name}
+    li username : #{user.username}
+    li password : #{user.password}
+
+  h3 Thank you

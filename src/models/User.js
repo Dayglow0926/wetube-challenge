@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import bcrypt from "bcrypt";
 /*
 PLEASE ADD YOUR USERNAME IN THIS LINE.
 ALL THE MODELS YOU WILL CREATE WILL HAVE YOUR USERNAME APPENDED TO THEM
@@ -10,7 +10,11 @@ WE NEED TO SHARE THE SAME DB SO NICO CAN CHECK OUT EVERYBODYS PROJECT.
 */
 const YOUR_USERNAME = "dayglow";
 
-const UserSchema = mongoose.Schema({});
+const UserSchema = mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  name: { type: String, required: true },
+});
 
 if (YOUR_USERNAME === null || typeof YOUR_USERNAME !== "string") {
   /*
@@ -26,6 +30,10 @@ if (YOUR_USERNAME === null || typeof YOUR_USERNAME !== "string") {
 if (YOUR_USERNAME.includes("@")) {
   throw Error("❌  Please remove the @ from your username  ❌");
 }
+
+UserSchema.pre("save", async function () {
+  this.password = await bcrypt.hash(this.password, 3);
+});
 
 const model = mongoose.model(`User_${YOUR_USERNAME}`, UserSchema);
 

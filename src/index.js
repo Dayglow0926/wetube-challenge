@@ -15,11 +15,11 @@ app.use(
   session({
     secret: "Hello!",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 app.use(localsMiddleware);
 app.use("/", userRouter);
 
 // Codesanbox does not need PORT :)
-app.listen(() => console.log(`✅  Server Ready!`));
+app.listen(4003, () => console.log(`✅  Server Ready!`));
