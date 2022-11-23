@@ -1,40 +1,50 @@
 const video = document.querySelector("video");
+const videoController = document.getElementById("videoController");
+const psBtn = videoController.querySelector("#playPauseBtn");
+const volumeBtn = videoController.querySelector("#volume");
+const volumeRange = videoController.querySelector("#volumeRange");
 
-const playBtn = document.querySelector("#play");
-const muteBtn = document.querySelector("#mute");
-const volumeController = document.querySelector("#volume");
+let volumeValue = 0.5;
+video.volume = volumeValue;
 
-let videoVolume = 0.5;
-video.volume = videoVolume;
-volumeController.value = videoVolume;
-
-const handlerPlayClick = () => {
-  if (video.paused) video.play();
-  else video.pause();
-
-  playBtn.innerHTML = video.paused ? "Play" : "Pause";
-};
-
-const handlerMuteClick = () => {
-  if (video.muted) video.muted = false;
-  else video.muted = true;
-
-  muteBtn.innerHTML = video.muted ? "Unmute" : "Mute";
-  volumeController.value = video.muted ? 0 : videoVolume;
-};
-
-const handlerVolume = (event) => {
-  const {
-    target: { value },
-  } = event;
-  if (value !== 0 && video.muted) {
-    video.muted = false;
-    muteBtn.innerHTML = "Mute";
+const handlePlayAndStop = () => {
+  if (video.paused) {
+    video.play();
+    psBtn.className = "fas fa-pause";
+  } else {
+    video.pause();
+    psBtn.className = "fas fa-play";
   }
-  videoVolume = value;
-  video.volume = videoVolume;
 };
 
-playBtn.addEventListener("click", handlerPlayClick);
-muteBtn.addEventListener("click", handlerMuteClick);
-volumeController.addEventListener("input", handlerVolume);
+const handleSound = () => {
+  if (video.muted) {
+    video.muted = false;
+    volumeRange.value = volumeValue;
+    volumeBtn.className = "fas fa-volume-up";
+  } else {
+    video.muted = true;
+    volumeRange.value = 0;
+    volumeBtn.className = "fas fa-volume-mute";
+  }
+};
+
+const handleVolume = (event) => {
+  const {
+    target: { value }
+  } = event;
+  if (video.muted) {
+    video.muted = false;
+    volumeBtn.className = "fas fa-volume-mute";
+  }
+  if (value === "0") {
+    volumeBtn.className = "fas fa-volume-off";
+  } else {
+    volumeBtn.className = "fas fa-volume-up";
+  }
+  video.volume = volumeValue = value;
+};
+
+psBtn.addEventListener("click", handlePlayAndStop);
+volumeBtn.addEventListener("click", handleSound);
+volumeRange.addEventListener("input", handleVolume);
