@@ -13,8 +13,6 @@
 
   <body>
     <video
-      controls
-      width="700px"
       src="https://serranoarevalo.github.io/notflix/9bfd1023900e31286103369c803c7ee9.ogv"
     ></video>
     <div id="videoController">
@@ -28,6 +26,13 @@
         max="1"
         id="volumeRange"
       />
+      <span id="currentTime">00:00:00</span>
+      <span>/</span>
+      <span id="totalTime">00:00:00</span>
+      <div>
+        <input id="timeline" type="range" , step="1" , value="0" , min="0" />
+      </div>
+      <i class="fas fa-expand"></i>
     </div>
   </body>
 </html>
