@@ -3,6 +3,7 @@
   <head>
     <title>Video Player</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/style.css" />
     <script
       src="https://kit.fontawesome.com/6ade36b36a.js"
       crossorigin="anonymous"
@@ -12,27 +13,51 @@
   </head>
 
   <body>
-    <video
-      src="https://serranoarevalo.github.io/notflix/9bfd1023900e31286103369c803c7ee9.ogv"
-    ></video>
-    <div id="videoController">
-      <i id="playPauseBtn" class="fas fa-play"></i>
-      <i id="volume" class="fas fa-volume-up"></i>
-      <input
-        type="range"
-        step="0.1"
-        value="0.5"
-        min="0"
-        max="1"
-        id="volumeRange"
-      />
-      <span id="currentTime">00:00:00</span>
-      <span>/</span>
-      <span id="totalTime">00:00:00</span>
-      <div>
-        <input id="timeline" type="range" , step="1" , value="0" , min="0" />
+    <div id="videoContainer">
+      <video
+        src="https://serranoarevalo.github.io/notflix/9bfd1023900e31286103369c803c7ee9.ogv"
+      ></video>
+      <div id="videoController" class="videoControls">
+        <div class="videoControls__play">
+          <span id="play" class="videoControls__playBtn">
+            <i class="fas fa-play"></i>
+          </span>
+          <div class="videoControls__time">
+            <span id="currentTime">00:00:00</span>
+            <span>/</span>
+            <span id="totalTime">00:00:00</span>
+          </div>
+        </div>
+        <input
+          id="timeline"
+          class="videoControls__timeline"
+          type="range"
+          ,
+          step="1"
+          ,
+          value="0"
+          ,
+          min="0"
+        />
+        <div class="videoControls__volume">
+          <input
+            type="range"
+            step="0.1"
+            value="0.5"
+            min="0"
+            max="1"
+            id="volume"
+          />
+          <span id="mute">
+            <i class="fas fa-volume-up"></i>
+          </span>
+        </div>
+        <div>
+          <span id="fullScreen">
+            <i class="fas fa-expand"></i>
+          </span>
+        </div>
       </div>
-      <i class="fas fa-expand"></i>
     </div>
   </body>
 </html>
